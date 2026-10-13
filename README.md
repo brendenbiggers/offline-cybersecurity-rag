@@ -4,6 +4,16 @@
 
 Built on Arch Linux using Ollama, Qwen 2.5 Coder, PrivateGPT, and Qdrant, this project demonstrates how to deploy a retrieval-augmented generation (RAG) system with local inference, document retrieval, Linux service management, and network isolation.
 
+
+## Live Demonstration
+
+The following screenshot shows the offline cybersecurity assistant running on Arch Linux, retrieving local Security+ study notes, and generating an answer using Qwen 2.5 Coder.
+
+![Offline Cybersecurity RAG Assistant Demonstration](cyber-ai-demo.png)
+
+*Local AI inference, document retrieval, and source attribution running on a Lenovo ThinkPad T14.*
+
+
 ## Project Overview
 
 The goal was to create an AI assistant capable of answering cybersecurity questions using locally stored reference material without relying on a cloud-based language model.
