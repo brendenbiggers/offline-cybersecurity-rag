@@ -1,0 +1,40 @@
+
+#!/usr/bin/env bash
+set -u
+
+# Resolve the repository directory automatically.
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+RAG_SCRIPT="$PROJECT_DIR/cyber-rag.py"
+
+echo "Starting Offline Cybersecurity AI..."
+
+# Check that the local Ollama API is available.
+if ! curl -fs --max-time 3 http://127.0.0.1:11434/api/tags >/dev/null; then
+    echo "ERROR: Ollama is not running."
+    exit 1
+fi
+
+# Start PrivateGPT only through its restricted systemd service.
+if ! systemctl is-active --quiet cyber-privategpt.service; then
+    echo "Starting restricted PrivateGPT service..."
+
+    if ! sudo systemctl start cyber-privategpt.service; then
+        echo "ERROR: Could not start restricted PrivateGPT."
+        exit 1
+    fi
+fi
+
+# Wait for the PrivateGPT API to become available.
+for attempt in {1..30}; do
+    if curl -fs --max-time 2 http://127.0.0.1:8080/v1/models >/dev/null; then
+        echo "Local AI services ready!"
+        echo
+        exec python "$RAG_SCRIPT"
+    fi
+
+    sleep 1
+done
+
+echo "ERROR: Restricted PrivateGPT service is not ready."
+exit 1
