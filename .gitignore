@@ -1,0 +1,48 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Private study materials and documents
+study-materials/
+documents/
+uploads/
+*.pdf
+*.docx
+
+# Local vector databases
+qdrant/
+chroma/
+*.sqlite
+*.sqlite3
+*.db
+
+# AI models and local data
+models/
+*.gguf
+*.safetensors
+
+# PrivateGPT configuration and runtime data
+settings.override.yaml
+private-gpt/
+storage/
+
+# Logs and temporary files
+*.log
+*.tmp
+.cache/
+
+# Credentials and keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Operating system files
+.DS_Store
+Thumbs.db
