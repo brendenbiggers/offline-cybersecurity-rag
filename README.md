@@ -12,6 +12,20 @@ Rather than sending prompts and documents to an external AI service, the system 
 
 The project also incorporates defensive security controls designed to restrict outbound network access from its AI services.
 
+
+## Project Navigation
+
+| Resource | Description |
+|---|---|
+| [Python RAG Assistant](cyber-rag.py) | Custom Python application for document retrieval and local AI responses |
+| [Secure Bash Launcher](scripts/cyber-ai) | Starts the assistant using restricted systemd services |
+| [Installation Guide](docs/INSTALLATION.md) | System requirements, configuration, and deployment instructions |
+| [Security Validation Report](docs/SECURITY-VALIDATION.md) | Network isolation tests, findings, and verification results |
+| [PrivateGPT systemd Service](systemd/cyber-privategpt.service) | Service management and outbound network restrictions |
+| [Ollama Security Configuration](systemd/ollama.service.d/) | Network isolation and cloud-disable settings |
+
+
+
 ## Technology Stack
 
 | Technology | Purpose |
